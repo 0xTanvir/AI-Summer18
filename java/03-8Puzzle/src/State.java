@@ -67,10 +67,45 @@ class State implements Serializable {
                 if (this.board[2][2]==0){
                     missCount++;
                 }
+                if(this.board[i][j]==0){
+                    System.out.println("Current Coordinate of 0 is : "+i+","+j);
+                    System.out.println("Which is the actual Coordinate of : "+getActualValueForCoordinate(i,j));
+                    System.out.println("And misplaced at : "+
+                            getCurrentCoordinateForValue(getActualValueForCoordinate(i,j))[0]
+                            +","+getCurrentCoordinateForValue(getActualValueForCoordinate(i,j))[1]);
+                }
                 k++;
             }
         }
         return missCount;
+    }
+
+    int getActualValueForCoordinate(int px, int py){
+        int k = 1;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(i==px&&j==py){
+                    return k;
+                }
+                k++;
+            }
+        }
+        return -1;
+    }
+
+    int[] getCurrentCoordinateForValue(int target){
+        int coord[] = new int[2];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(target==this.board[i][j]){
+                    coord[0]=i;
+                    coord[1]=j;
+                    return coord;
+                }
+            }
+        }
+        return coord;
     }
 
     void printBoard() {

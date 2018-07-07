@@ -32,27 +32,25 @@ public class Main {
 
             System.out.println("Current State:");
             currentState.printBoard();
+            System.out.println(currentState.misPlaced()+" Tiles Misplaced");
 
             closedSet.add(currentState);
 
             if (currentState.goUp() != null &&  !closedSet.contains(currentState.goUp())) {
                 fringe.add(new Node(currentState.goUp(), currentNode.cost + 1, currentNode));
-                System.out.println(currentState.misPlaced()+" Tiles Misplaced");
+
             }
 
             if (currentState.goDown() != null &&  !closedSet.contains(currentState.goUp())) {
                 fringe.add(new Node(currentState.goDown(), currentNode.cost + 1, currentNode));
-                System.out.println(currentState.misPlaced()+" Tiles Misplaced");
             }
 
             if (currentState.goLeft() != null &&  !closedSet.contains(currentState.goUp())) {
                 fringe.add(new Node(currentState.goLeft(), currentNode.cost + 1, currentNode));
-                System.out.println(currentState.misPlaced()+" Tiles Misplaced");
             }
 
             if (currentState.goRight() != null &&  !closedSet.contains(currentState.goUp())) {
                 fringe.add(new Node(currentState.goRight(), currentNode.cost + 1, currentNode));
-                System.out.println(currentState.misPlaced()+" Tiles Misplaced");
             }
 
         }
